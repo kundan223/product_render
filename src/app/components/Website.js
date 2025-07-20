@@ -5,6 +5,7 @@ import SectionTwo from './SectionTwo';
 import MeetMe from './MeetMe';
 import Portfolio from './Portfolio';
 import Carousal from './Carousal';
+import End from './End';
 const Website = () => {
   return (
     <main>
@@ -14,7 +15,7 @@ const Website = () => {
       <MeetMe/>
       <Portfolio/>
       <Carousal/>
-      
+      <End/>
     </main>
   );
 };
