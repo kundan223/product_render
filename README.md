@@ -1,8 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Here's a more visually appealing and professional version of your README, customized for your **portfolio website**, hosted on **Netlify**, and built with **Next.js** and **GSAP**. I’ve removed references to Vercel and added a section for your 3D portfolio context along with the image reference.
 
-## Getting Started
+---
 
-First, run the development server:
+# 🎨 Kundan's 3D Portfolio
+
+Welcome to my personal portfolio website — a space where I showcase my **3D design work**, built with modern web technologies to deliver a fluid, interactive experience.
+
+![Website Preview](public/images/PRODUCT_RENDER.PNG)
+
+> **Live Site:** [kundanbani.netlify.app](https://kundanbani.netlify.app/)
+
+---
+
+## 🚀 Tech Stack
+
+* **Framework:** [Next.js](https://nextjs.org)
+* **Animation Library:** [GSAP (GreenSock)](https://greensock.com/gsap/)
+* **Deployment:** [Netlify](https://www.netlify.com/)
+* **Styling:** Tailwind CSS
+
+---
+
+## 🛠 Getting Started
+
+Clone the project and run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +35,41 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit **[http://localhost:3000](http://localhost:3000)** in your browser to view the site.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+You can begin editing the homepage by modifying:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/page.js
+```
 
-## Learn More
+The page auto-updates as you save.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Project Structure Highlights
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* `public/images` – Images used across the site (includes the portfolio preview).
+* `app/page.js` – Main landing page logic.
+* `components/` – Reusable UI components.
+* `styles/` – Global and module CSS (or Tailwind config).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📌 About
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is a **portfolio website** to feature my **3D animation, design, and motion work**. More sections and interactive experiences will be added as my body of work grows. Stay tuned!
+
+---
+
+## 📚 Learn More
+
+Want to dig deeper into the stack?
+
+* [Next.js Documentation](https://nextjs.org/docs)
+* [GSAP Documentation](https://greensock.com/docs/)
+* [Tailwind CSS](https://tailwindcss.com/docs)
+
+---
+
+Let me know if you'd like to include links to your **socials**, **resume**, or **contact form** in the README as well!
