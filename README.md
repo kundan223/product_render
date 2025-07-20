@@ -142,14 +142,3 @@ Contributions are welcome! To contribute:
 > 👋 If you'd like to collaborate or have feedback, feel free to reach out or open an issue!
 
 ```
-
----
-
-Let me know if you'd like me to:
-
-- Add badges (Netlify, tech logos, etc.)
-- Link your GitHub repo
-- Add license or credits
-
-Would you also like a markdown version of your portfolio linked to your social handles and resume?
-```
