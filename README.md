@@ -1,4 +1,4 @@
-Here's a more visually appealing and professional version of your README, customized for your **portfolio website**, hosted on **Netlify**, and built with **Next.js** and **GSAP**. I’ve removed references to Vercel and added a section for your 3D portfolio context along with the image reference.
+
 
 ---
 
@@ -6,7 +6,7 @@ Here's a more visually appealing and professional version of your README, custom
 
 Welcome to my personal portfolio website — a space where I showcase my **3D design work**, built with modern web technologies to deliver a fluid, interactive experience.
 
-![Website Preview](public/images/PRODUCT_RENDER.PNG)
+![Website Preview](public/Images/PRODUCT_RENDER.png)
 
 > **Live Site:** [kundanbani.netlify.app](https://kundanbani.netlify.app/)
 
