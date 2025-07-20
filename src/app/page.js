@@ -1,18 +1,21 @@
-import Navbar from "./components/Navbar";
+import Website from "./components/Website"; // Capitalized component name
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
-      <h1 className="text-3xl font-bold underline mt-8">
-        Welcome to BANI Agency
-      </h1>
-      <h1 className="bayon-regular">This uses Bayon</h1>
+    <main className="relative">
+      
+      <div className="fixed top-0 left-0 w-full h-screen -z-10">
+        <video
+          className="w-full h-full object-cover"
+          src="/videos/Hero-section-render.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      </div>
 
-<p className="barlow-regular">This uses Barlow Regular</p>
-
-<p className="barlow-bold-italic">This is Barlow Bold Italic</p>
-
+      <Website />
     </main>
   );
 }
