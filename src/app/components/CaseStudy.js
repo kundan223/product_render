@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const CaseStudy = ({ imageSrc, route }) => {
   return (
-    <div className="w-full p-2 md:p-4">
+    <div className="w-full p-2 ">
       {/* Image Container */}
       <div className="relative rounded- overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 h-[180px] md:h-[250px]">
         <img

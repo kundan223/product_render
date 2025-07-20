@@ -16,52 +16,51 @@ const SectionTwo = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Center image animation
-      gsap.fromTo(
-        centerRef.current,
-        { y: 150, opacity: 0, scale: 0.95 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: centerRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reset',
-            once: false,
-          },
-        }
-      );
+      // Exaggerated parallax scroll effect
+      gsap.to(leftRef.current, {
+        yPercent: -30,
+        ease: 'power1.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
 
-      // Left and right CaseStudy blocks
-      gsap.fromTo(
-        [leftRef.current, rightRef.current],
-        { y: 150, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.4,
-          ease: 'power3.out',
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reset',
-            once: false,
-          },
-        }
-      );
+      gsap.to(centerRef.current, {
+        yPercent: -15,
+        ease: 'power1.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+
+      gsap.to(rightRef.current, {
+        yPercent: -45,
+        ease: 'power1.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
     }, sectionRef);
 
-    return () => ctx.revert(); // cleanup
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="flex flex-col md:flex-row justify-center items-start gap-4 py-20">
-      {/* Left Side */}
-      <div ref={leftRef} className="flex flex-col justify-between w-full md:w-[22%]">
+    <section
+      ref={sectionRef}
+      className="flex flex-col md:flex-row justify-center items-start py-20 relative overflow-hidden gap-6"
+    >
+      {/* Left Case Studies */}
+      <div ref={leftRef} className="flex flex-col justify-between w-full md:w-[22%] gap-4">
         <CaseStudy imageSrc="/Images/caseStudy1.png" route="/case-study/project1" />
         <CaseStudy imageSrc="/Images/caseStudy2.png" route="/case-study/project2" />
       </div>
@@ -71,10 +70,19 @@ const SectionTwo = () => {
         <PortfolioImage />
       </div>
 
-      {/* Right Side */}
-      <div ref={rightRef} className="flex flex-col justify-between w-full md:w-[22%]">
+      {/* Right Case Studies */}
+      <div ref={rightRef} className="flex flex-col justify-between w-full md:w-[22%] gap-4">
         <CaseStudy imageSrc="/Images/caseStudy3.png" route="/case-study/project3" />
         <CaseStudy imageSrc="/Images/caseStudy4.png" route="/case-study/project4" />
+      </div>
+
+      {/* Button */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 ">
+     <button className="relative px-8 py-3 text-white text-lg font-semibold rounded-md border border-white bg-transparent transition-all duration-500 hover:shadow-[0_0_5px_white]">
+  Book A Free Call
+</button>
+
+
       </div>
     </section>
   );
