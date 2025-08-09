@@ -139,3 +139,14 @@ body {
   font-weight: 900;
   font-style: italic;
 }
+
+/* Hide scrollbar for Chrome, Safari, Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}

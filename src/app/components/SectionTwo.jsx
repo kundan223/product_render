@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import CaseStudy from './CaseStudy';
 import PortfolioImage from './PortfolioImage';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
+
+
 
 const SectionTwo = () => {
   const sectionRef = useRef();
@@ -14,9 +16,41 @@ const SectionTwo = () => {
   const leftRef = useRef();
   const rightRef = useRef();
 
+  // CaseStudy logic moved here
+  const CaseStudyInline = ({ imageSrc, route }) => {
+    // Route mapping function
+    const getRoutePath = (route) => {
+      if (route === 'project_1') {
+        // example: redirect to DroneCaseStudy page
+        return '/case-study/drone'; 
+        // ^ you can change this to your actual path where DroneCaseStudy is rendered
+      }
+      return route;
+    };
+
+    return (
+      <div className="w-full p-2">
+        {/* Image Container */}
+        <div className="relative rounded overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 h-[180px] md:h-[250px]">
+          <img
+            src={imageSrc}
+            alt="Case Study"
+            className="w-full h-full object-cover"
+          />
+
+          {/* Button on top of image */}
+          <Link href={getRoutePath(route)}>
+            <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 px-4 py-1.5 md:px-6 md:py-2 border border-white bg-[#838383]/30 text-white rounded-full text-xs md:text-sm text-center backdrop-blur-md transition-all hover:bg-[#838383]/60 cursor-pointer">
+              View CaseStudy ▲
+            </div>
+          </Link>
+        </div>
+      </div>
+    );
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Exaggerated parallax scroll effect
       gsap.to(leftRef.current, {
         yPercent: -30,
         ease: 'power1.out',
@@ -61,8 +95,8 @@ const SectionTwo = () => {
     >
       {/* Left Case Studies */}
       <div ref={leftRef} className="flex flex-col justify-between w-full md:w-[22%] gap-4">
-        <CaseStudy imageSrc="/Images/caseStudy1.png" route="/case-study/project1" />
-        <CaseStudy imageSrc="/Images/caseStudy2.png" route="/case-study/project2" />
+        <CaseStudyInline imageSrc="/Images/caseStudy1.png" route="/case-study/project1" />
+        <CaseStudyInline imageSrc="/Images/caseStudy2.png" route="case_study" />
       </div>
 
       {/* Center Portfolio Image */}
@@ -72,17 +106,15 @@ const SectionTwo = () => {
 
       {/* Right Case Studies */}
       <div ref={rightRef} className="flex flex-col justify-between w-full md:w-[22%] gap-4">
-        <CaseStudy imageSrc="/Images/caseStudy3.png" route="/case-study/project3" />
-        <CaseStudy imageSrc="/Images/caseStudy4.png" route="/case-study/project4" />
+        <CaseStudyInline imageSrc="/Images/caseStudy3.png" route="/case-study/project3" />
+        <CaseStudyInline imageSrc="/Images/caseStudy4.png" route="/case-study/project4" />
       </div>
 
       {/* Button */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 ">
-     <button className="relative px-8 py-3 text-white text-lg font-semibold rounded-md border border-white bg-transparent transition-all duration-500 hover:shadow-[0_0_5px_white]">
-  Book A Free Call
-</button>
-
-
+        <button className="relative px-8 py-3 text-white text-lg font-semibold rounded-md border border-white bg-transparent transition-all duration-500 hover:shadow-[0_0_5px_white]">
+          Book A Free Call
+        </button>
       </div>
     </section>
   );
