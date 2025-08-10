@@ -1,4 +1,7 @@
-import React from "react";
+'use client';
+
+import React from 'react';
+import Image from 'next/image';
 
 export default function CaseStudyPage() {
   return (
@@ -6,7 +9,7 @@ export default function CaseStudyPage() {
       {/* HERO */}
       <section
         className="relative w-full h-[60vh] sm:h-[68vh] md:h-[70vh] min-h-[380px] sm:min-h-[480px] md:min-h-[520px] bg-cover bg-center"
-        style={{ backgroundImage: "url('CaseStudy/1/hero.png')" }}
+        style={{ backgroundImage: "url('/CaseStudy/1/hero.png')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
       </section>
@@ -20,11 +23,15 @@ export default function CaseStudyPage() {
         <section className="relative bg-black">
           {/* desktop-only background lines */}
           <div className="pointer-events-none absolute inset-0 hidden md:block">
-            <img
-              src="CaseStudy/1/bg_lines.png"
-              alt="bg lines"
-              className="h-full w-full object-cover opacity-70"
-            />
+            <div className="relative h-full w-full">
+              <Image
+                src="/CaseStudy/1/bg_lines.png"
+                alt="background lines"
+                fill
+                className="object-cover opacity-70"
+                priority={false}
+              />
+            </div>
           </div>
 
           {/* content */}
@@ -32,7 +39,9 @@ export default function CaseStudyPage() {
             {/* LEFT */}
             <div className="relative">
               <p className="max-w-[620px] md:max-w-[520px] text-[13px] md:text-[14px] leading-6 text-white/85">
-                The startup was struggling to visually communicate how their system works — including its sensors, storage mechanism, and deployment strategy. They needed 3D renders that could walk investors through the product without needing lengthy explanations.
+                The startup was struggling to visually communicate how their system works — including its sensors,
+                storage mechanism, and deployment strategy. They needed 3D renders that could walk investors through
+                the product without needing lengthy explanations.
               </p>
 
               <div className="mt-8 flex items-center gap-3">
@@ -45,18 +54,26 @@ export default function CaseStudyPage() {
               {/* stacked panels like 3_1 card */}
               <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
                 <div className="rounded-sm border border-white/10 bg-white/5 p-3 sm:p-4">
-                  <img
-                    src="CaseStudy/1/2_2.png"
-                    alt="isometric render 1"
-                    className="w-full max-h-[380px] sm:max-h-[460px] object-contain"
-                  />
+                  <div className="relative w-full max-h-[380px] sm:max-h-[460px]">
+                    <Image
+                      src="/CaseStudy/1/2_2.png"
+                      alt="isometric render 1"
+                      width={1600}
+                      height={1200}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
                 </div>
                 <div className="rounded-sm border border-white/10 bg-white/5 p-3 sm:p-4">
-                  <img
-                    src="CaseStudy/1/1_4.png"
-                    alt="isometric render 2"
-                    className="w-full max-h-[380px] sm:max-h-[460px] object-contain"
-                  />
+                  <div className="relative w-full max-h-[380px] sm:max-h-[460px]">
+                    <Image
+                      src="/CaseStudy/1/1_4.png"
+                      alt="isometric render 2"
+                      width={1600}
+                      height={1200}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,11 +97,13 @@ export default function CaseStudyPage() {
               <div className="mt-6 space-y-4 sm:space-y-5 text-[13px] md:text-[14px] leading-6 text-white/85">
                 <p>
                   <span className="font-medium text-white">Research &amp; Understanding: </span>
-                  I began by discussing the product's functionality with the founder to deeply understand how the landmine drone and its storage unit worked.
+                  I began by discussing the product&apos;s functionality with the founder to deeply understand how the
+                  landmine drone and its storage unit worked.
                 </p>
                 <p>
                   <span className="font-medium text-white">Concept &amp; Composition: </span>
-                  We collaboratively decided on camera angles that would make the renders intuitive and impactful. I focused on isometric views for clarity and professionalism.
+                  We collaboratively decided on camera angles that would make the renders intuitive and impactful. I
+                  focused on isometric views for clarity and professionalism.
                 </p>
                 <div>
                   <p className="font-medium text-white">Execution:</p>
@@ -104,9 +123,11 @@ export default function CaseStudyPage() {
               </div>
 
               <div className="relative mt-6">
-                <img
-                  src="CaseStudy/1/3_1.png"
+                <Image
+                  src="/CaseStudy/1/3_1.png"
                   alt="detail"
+                  width={1600}
+                  height={1200}
                   className="w-full max-w-[640px] md:max-w-[520px] rounded-sm border border-white/10 bg-white/5 object-contain"
                 />
               </div>
@@ -123,9 +144,11 @@ export default function CaseStudyPage() {
         <section className="relative bg-black pb-20">
           <div className="relative mx-auto w-[92%] max-w-[1200px]">
             <div className="relative mx-auto mt-6 w-full">
-              <img
-                src="CaseStudy/1/4_1.png"
+              <Image
+                src="/CaseStudy/1/4_1.png"
                 alt="terrain"
+                width={1920}
+                height={1080}
                 className="mx-auto w-[96%] sm:w-full max-w-[980px] object-contain"
               />
             </div>
