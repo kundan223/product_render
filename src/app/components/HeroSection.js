@@ -3,20 +3,36 @@ import React from "react";
 const Website = () => {
   return (
     <main>
-      {/* Black section with bottom-aligned text */}
-      <div className="bg-black text-white flex flex-col justify-end px-4 sm:px-8 md:px-12 lg:px-20 h-[300px] sm:h-[400px] md:h-[450px]">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between w-full">
-          <h1 className="font-thin leading-none mb-2 sm:mb-4 text-[clamp(2rem,8vw,6rem)]">
-            PORTFOLIO
-          </h1>
-          <h1 className="text-base sm:text-lg md:text-2xl mb-1 sm:mb-6 opacity-80">
-            2024 – present
-          </h1>
+      {/* Hero: black, bottom-aligned */}
+      <section className="bg-black text-white">
+        <div className="mx-auto max-w-screen-2xl px-4 sm:px-8 md:px-12 lg:px-20">
+          <div className="flex min-h-[280px] sm:min-h-[360px] md:min-h-[420px] lg:min-h-[480px] flex-col justify-end">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4">
+              <h1
+                className="
+                  font-thin leading-[0.9]
+                  text-[clamp(2.25rem,10vw,6rem)]
+                  tracking-tight
+                "
+              >
+                PORTFOLIO
+              </h1>
+
+              <h2
+                className="
+                  mb-1 sm:mb-2 opacity-80 whitespace-nowrap
+                  text-[clamp(0.95rem,2.5vw,1.5rem)]
+                "
+              >
+                2024 – present
+              </h2>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Spacer */}
-      <div className="h-16 sm:h-20 md:h-28" />
+      <div className="h-12 sm:h-16 md:h-24" />
     </main>
   );
 };
