@@ -119,24 +119,32 @@ const SectionTwo = () => {
         </div>
 
         {/* CTA: static on mobile, floating on md+ */}
-        <div
-          className="
-            mt-8 flex justify-center
-            md:mt-0 md:absolute md:bottom-6 md:left-1/2 md:-translate-x-1/2
-          "
-        >
-          <Link
-            href="/book-call"
-            className="
-              relative px-6 sm:px-8 py-2.5 sm:py-3
-              text-white text-base sm:text-lg font-semibold
-              rounded-md border border-white/80 bg-transparent
-              transition-all duration-500 hover:shadow-[0_0_8px_white]
-            "
-          >
-            Book a Free Call
-          </Link>
-        </div>
+        {/* CTA */}
+<div
+  className="
+    mt-6 flex justify-center px-4
+    md:mt-0 md:absolute md:inset-x-0 md:bottom-6 md:px-0
+  "
+>
+  <Link
+    href="/book-call"
+    className="
+      w-full sm:w-auto
+      text-center
+      rounded-full border border-white/80 bg-white/10 text-white
+      px-6 sm:px-8 py-3
+      text-base sm:text-lg font-semibold
+      backdrop-blur-md
+      transition-all duration-300
+      hover:bg-white/20 hover:shadow-[0_0_8px_white]
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70
+    "
+  >
+    Book a Free Call
+  </Link>
+</div>
+
+
       </div>
     </section>
   );
