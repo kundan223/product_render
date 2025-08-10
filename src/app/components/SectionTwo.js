@@ -59,29 +59,35 @@ const SectionTwo = () => {
   const rightRef = useRef(null);
 
   useEffect(() => {
-    // Respect reduced motion
-    if (typeof window !== 'undefined') {
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduceMotion) return;
-    }
+    const reduceMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
 
-    const ctx = gsap.context(() => {
-      const base = {
-        ease: 'power1.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      };
+    const mm = gsap.matchMedia();
 
-      if (leftRef.current) gsap.to(leftRef.current, { yPercent: -30, ...base });
-      if (centerRef.current) gsap.to(centerRef.current, { yPercent: -15, ...base });
-      if (rightRef.current) gsap.to(rightRef.current, { yPercent: -45, ...base });
-    }, sectionRef);
+    // Only enable animations for md and larger
+    mm.add('(min-width: 768px)', () => {
+      const ctx = gsap.context(() => {
+        const base = {
+          ease: 'power1.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        };
 
-    return () => ctx.revert();
+        gsap.to(leftRef.current, { yPercent: -30, ...base });
+        gsap.to(centerRef.current, { yPercent: -15, ...base });
+        gsap.to(rightRef.current, { yPercent: -45, ...base });
+      }, sectionRef);
+
+      return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -118,33 +124,30 @@ const SectionTwo = () => {
           </div>
         </div>
 
-        {/* CTA: static on mobile, floating on md+ */}
         {/* CTA */}
-<div
-  className="
-    mt-6 flex justify-center px-4
-    md:mt-0 md:absolute md:inset-x-0 md:bottom-6 md:px-0
-  "
->
-  <Link
-    href="/book-call"
-    className="
-      w-full sm:w-auto
-      text-center
-      rounded-full border border-white/80 bg-white/10 text-white
-      px-6 sm:px-8 py-3
-      text-base sm:text-lg font-semibold
-      backdrop-blur-md
-      transition-all duration-300
-      hover:bg-white/20 hover:shadow-[0_0_8px_white]
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70
-    "
-  >
-    Book a Free Call
-  </Link>
-</div>
-
-
+        <div
+          className="
+            mt-6 flex justify-center px-4
+            md:mt-0 md:absolute md:inset-x-0 md:bottom-6 md:px-0
+          "
+        >
+          <Link
+            href="/book-call"
+            className="
+              w-full sm:w-auto
+              text-center
+              rounded-full border border-white/80 bg-white/10 text-white
+              px-6 sm:px-8 py-3
+              text-base sm:text-lg font-semibold
+              backdrop-blur-md
+              transition-all duration-300
+              hover:bg-white/20 hover:shadow-[0_0_8px_white]
+              focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70
+            "
+          >
+            Book a Free Call
+          </Link>
+        </div>
       </div>
     </section>
   );
