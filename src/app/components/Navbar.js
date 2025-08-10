@@ -104,21 +104,21 @@ const Navbar = () => {
             Blogs
           </a>
 
-          {/* Optional extra links (example using Next/Link) */}
+          {/* Internal page example */}
           <Link href="/drone2" className="block rounded-lg px-3 py-2 hover:bg-white/10 transition" onClick={close}>
             Drone2
           </Link>
         </nav>
 
-        {/* Optional: bottom section */}
+        {/* Bottom section */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
-          <a
+          <Link
             href="/#contact"
             onClick={close}
             className="block text-center rounded-full border border-white/60 bg-white/10 px-4 py-2 hover:bg-white/20 transition"
           >
             Contact
-          </a>
+          </Link>
         </div>
       </aside>
     </nav>
