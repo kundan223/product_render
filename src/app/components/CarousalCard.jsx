@@ -71,4 +71,3 @@ const CarousalCard = ({ imageSrc, name, title, review, rating = 0 }) => {
 };
 
 export default CarousalCard;
-git 
