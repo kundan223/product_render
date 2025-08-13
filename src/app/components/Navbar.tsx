@@ -3,6 +3,60 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 
+// A local video preview link (hover shows floating preview)
+type HoverPreviewProps = {
+  href: string;
+  label: string;
+  videoSrc: string; // local video path e.g. "/videos/sample.mp4"
+};
+
+function HoverPreviewLink({ href, label, videoSrc }: HoverPreviewProps) {
+  const [open, setOpen] = useState(false);
+  const [delayTimer, setDelayTimer] = useState<NodeJS.Timeout | null>(null);
+
+  const onEnter = () => {
+    const t = setTimeout(() => setOpen(true), 80);
+    setDelayTimer(t);
+  };
+  const onLeave = () => {
+    if (delayTimer) clearTimeout(delayTimer);
+    setOpen(false);
+  };
+
+  return (
+    <div
+      className="relative block w-fit"
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      onFocus={onEnter}
+      onBlur={onLeave}
+    >
+      <a href={href} className="block hover:underline">{label}</a>
+
+      {/* Floating preview */}
+      <div
+        className={`hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 transition
+          ${open ? 'opacity-100 translate-x-0 pointer-events-auto' : 'opacity-0 -translate-x-1 pointer-events-none'}`}
+        style={{ width: 280 }}
+      >
+        <div className="rounded-xl overflow-hidden ring-1 ring-white/15 shadow-2xl shadow-black/50 bg-black">
+          <video
+            src={videoSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          <div className="px-3 py-1.5 text-[11px] text-white/70 bg-black/70">
+            Preview: {label}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
@@ -32,13 +86,21 @@ const Navbar = () => {
       <div className="mx-auto flex items-center justify-between gap-3 px-4 md:px-6">
         {/* Left: Services (stacked vertically on md+) */}
         <div className="hidden md:block md:w-3/12">
-          <div className="pl-2 space-y-1">
-            <a href="#product-video" className="block hover:underline">PRODUCT VIDEO</a>
-            <a href="#product-renders" className="block hover:underline">PRODUCT RENDERS</a>
+          <div className="pl-2 space-y-2">
+            <HoverPreviewLink
+              href="#product-video"
+              label="PRODUCT VIDEO"
+              videoSrc="/videos/product-video.mp4"
+            />
+            <HoverPreviewLink
+              href="#product-renders"
+              label="PRODUCT RENDERS"
+              videoSrc="/videos/product-renders.mp4"
+            />
           </div>
         </div>
 
-        {/* Mobile: hamburger (left side) */}
+        {/* Mobile: hamburger */}
         <button
           ref={openBtnRef}
           type="button"
@@ -55,7 +117,7 @@ const Navbar = () => {
           </svg>
         </button>
 
-        {/* Spacer on mobile so hamburger sits left; hide on md where left column shows */}
+        {/* Spacer on mobile */}
         <div className="md:hidden flex-1" />
 
         {/* Right: Navigation (desktop) */}
@@ -63,7 +125,7 @@ const Navbar = () => {
           <div className="flex flex-wrap justify-end gap-x-3 gap-y-1">
             <a href="/work" className="hover:underline">Work</a>
             <a href="#about" className="hover:underline">About</a>
-            <a href="#blogs" className="hover:underline">Blogs</a>
+            <a href="/blogs" className="hover:underline">Blogs</a>
           </div>
         </div>
       </div>
@@ -103,7 +165,6 @@ const Navbar = () => {
         </div>
 
         <nav className="p-4 space-y-2">
-          {/* Use Link directly (no nested <a>) */}
           <Link
             href="/work"
             onClick={close}
@@ -111,8 +172,6 @@ const Navbar = () => {
           >
             Work
           </Link>
-
-          {/* In-page anchors remain <a> */}
           <a
             href="#about"
             onClick={close}
@@ -121,14 +180,12 @@ const Navbar = () => {
             About
           </a>
           <a
-            href="#blogs"
+            href="/blogs"
             onClick={close}
             className="block rounded-lg px-3 py-2 hover:bg-white/10 transition"
           >
             Blogs
           </a>
-
-          {/* Internal page example */}
           <Link
             href="/drone2"
             onClick={close}
@@ -138,7 +195,6 @@ const Navbar = () => {
           </Link>
         </nav>
 
-        {/* Bottom section */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
           <Link
             href="/#contact"
