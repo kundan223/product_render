@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 
-// A local video preview link (hover shows floating preview)
+// A local video preview link (hover shows centered floating preview)
 type HoverPreviewProps = {
   href: string;
   label: string;
@@ -12,47 +12,55 @@ type HoverPreviewProps = {
 
 function HoverPreviewLink({ href, label, videoSrc }: HoverPreviewProps) {
   const [open, setOpen] = useState(false);
-  const [delayTimer, setDelayTimer] = useState<NodeJS.Timeout | null>(null);
+  const openTimer = useRef<number | null>(null);
+  const closeTimer = useRef<number | null>(null);
 
-  const onEnter = () => {
-    const t = setTimeout(() => setOpen(true), 80);
-    setDelayTimer(t);
+  const scheduleOpen = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    openTimer.current = window.setTimeout(() => setOpen(true), 80);
   };
-  const onLeave = () => {
-    if (delayTimer) clearTimeout(delayTimer);
-    setOpen(false);
+
+  const scheduleClose = () => {
+    if (openTimer.current) window.clearTimeout(openTimer.current);
+    // small delay so you can move cursor from link to preview
+    closeTimer.current = window.setTimeout(() => setOpen(false), 120);
   };
 
   return (
     <div
       className="relative block w-fit"
-      onMouseEnter={onEnter}
-      onMouseLeave={onLeave}
-      onFocus={onEnter}
-      onBlur={onLeave}
+      onMouseEnter={scheduleOpen}
+      onMouseLeave={scheduleClose}
+      onFocus={scheduleOpen}
+      onBlur={scheduleClose}
     >
       <a href={href} className="block hover:underline">{label}</a>
 
-      {/* Floating preview */}
-      <div
-        className={`hidden md:block absolute left-full top-1/2 -translate-y-1/2 ml-3 transition
-          ${open ? 'opacity-100 translate-x-0 pointer-events-auto' : 'opacity-0 -translate-x-1 pointer-events-none'}`}
-        style={{ width: 280 }}
-      >
-        <div className="rounded-xl overflow-hidden ring-1 ring-white/15 shadow-2xl shadow-black/50 bg-black">
-          <video
-            src={videoSrc}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          />
-          <div className="px-3 py-1.5 text-[11px] text-white/70 bg-black/70">
-            Preview: {label}
+      {/* Centered floating preview */}
+      {open && (
+        <div className="fixed inset-0 z-[70] pointer-events-none flex items-center justify-center">
+          <div
+            className="pointer-events-auto rounded-xl overflow-hidden ring-1 ring-white/15 shadow-2xl shadow-black/50 bg-black"
+            onMouseEnter={scheduleOpen}
+            onMouseLeave={scheduleClose}
+            style={{ width: 320 }}
+          >
+            <div className="aspect-video w-full">
+              <video
+                src={videoSrc}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="px-3 py-1.5 text-[11px] text-white/70 bg-black/70">
+              Preview: {label}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -90,12 +98,12 @@ const Navbar = () => {
             <HoverPreviewLink
               href="#product-video"
               label="PRODUCT VIDEO"
-              videoSrc="/videos/product-video.mp4"
+              videoSrc="/videos/Product_animation.mp4"
             />
             <HoverPreviewLink
               href="#product-renders"
               label="PRODUCT RENDERS"
-              videoSrc="/videos/product-renders.mp4"
+              videoSrc="/videos/Product_render.mp4"
             />
           </div>
         </div>
@@ -186,13 +194,6 @@ const Navbar = () => {
           >
             Blogs
           </a>
-          <Link
-            href="/drone2"
-            onClick={close}
-            className="block rounded-lg px-3 py-2 hover:bg-white/10 transition"
-          >
-            Drone2
-          </Link>
         </nav>
 
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
