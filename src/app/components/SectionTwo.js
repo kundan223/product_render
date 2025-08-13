@@ -106,7 +106,7 @@ const SectionTwo = () => {
         >
           {/* Left column */}
           <div ref={leftRef} className="flex flex-col justify-between">
-            <CaseStudyInline imageSrc="/Images/caseStudy1.png" route="/case-study/project1" />
+            <CaseStudyInline imageSrc="/Images/caseStudy1.png" route="/case_study_2" />
             <CaseStudyInline imageSrc="/Images/caseStudy2.png" route="/case_study_1" />
           </div>
 
@@ -119,8 +119,8 @@ const SectionTwo = () => {
 
           {/* Right column */}
           <div ref={rightRef} className="flex flex-col justify-between">
-            <CaseStudyInline imageSrc="/Images/caseStudy3.png" route="/case-study/project3" />
-            <CaseStudyInline imageSrc="/Images/caseStudy4.png" route="/case-study/project4" />
+            <CaseStudyInline imageSrc="/Images/caseStudy3.png" route="/case_study_3" />
+            <CaseStudyInline imageSrc="/Images/caseStudy4.png" route="/case_study_4" />
           </div>
         </div>
 

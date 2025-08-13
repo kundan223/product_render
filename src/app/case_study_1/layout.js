@@ -2,10 +2,13 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Navbar from '../components/Navbar';
 
 export default function CaseStudyPage() {
   return (
-    <div className="w-full text-white selection:bg-white/10 selection:text-white">
+    <>
+      <Navbar />
+      <div className="w-full text-white selection:bg-white/10 selection:text-white">
       {/* HERO */}
       <section className="relative w-full bg-black">
         <div className="relative h-[54vh] sm:h-[62vh] md:h-[70vh] min-h-[340px] sm:min-h-[460px] md:min-h-[520px]">
@@ -181,5 +184,6 @@ export default function CaseStudyPage() {
         </section>
       </div>
     </div>
+    </>
   );
 }
