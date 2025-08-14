@@ -145,7 +145,7 @@ const SectionTwo = () => {
               focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70
             "
           >
-            Book a Free Call
+            LETS HAVE A MEET
           </Link>
         </div>
       </div>

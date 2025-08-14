@@ -131,8 +131,8 @@ const Navbar = () => {
         {/* Right: Navigation (desktop) */}
         <div className="hidden md:block md:w-7/12">
           <div className="flex flex-wrap justify-end gap-x-3 gap-y-1">
-            <a href="/work" className="hover:underline">Work</a>
-            <a href="#about" className="hover:underline">About</a>
+            <a href="/work" className="hover:underline">Work,</a>
+          
             <a href="/blogs" className="hover:underline">Blogs</a>
           </div>
         </div>
