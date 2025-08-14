@@ -11,9 +11,15 @@ const PortfolioImage = () => {
       />
 
       {/* Button centered at bottom as cursor mimic */}
-      <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-2 rounded-full opacity-90 group-hover:scale-105 transition-all duration-300 pointer-events-none">
-        About Me
-      </button>
+      <button
+  onClick={() => {
+    window.open("https://wa.me/919205356231", "_blank");
+  }}
+  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-2 rounded-full opacity-90 group-hover:scale-105 transition-all duration-300"
+>
+  Connect With Me
+</button>
+
     </div>
   );
 };
