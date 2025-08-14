@@ -27,7 +27,7 @@ const testimonials = [
 
 const CarousalWrapper = () => {
   return (
-    <section className="w-full bg-black py-12 px-4 relative">
+    <section className="w-full bg-black bg-opacity-50 py-12 px-4 relative">
       <div className="mb-8">
         <h2 className="text-white text-2xl font-normal text-left">Testimonials ▼</h2>
         <div className="w-full h-[1px] bg-white/30 mt-2" />

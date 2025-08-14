@@ -10,7 +10,7 @@ const CarousalCard = ({ imageSrc, name, title, review, rating = 0 }) => {
         w-full
         max-w-[92vw] sm:max-w-[420px] md:max-w-[440px]
         h-[380px] sm:h-[400px] md:h-[420px]   /* Fixed height */
-        bg-[#111] text-white
+       border text-white
         rounded-2xl shadow-lg
         p-5 sm:p-6
         flex flex-col
